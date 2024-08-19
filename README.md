@@ -24,7 +24,10 @@ intalação do prettier para formatação do css no tailwind:
 instalação do shadcn para utilização de componente pré formatados (componentes instalados serão colocados junto a instalação ignorando a linha do tempo por motivo organizacional!):
 - npx shadcn-ui@latest init
 - (botão) - npx shadcn-ui@latest add button
+- (card) - npx shadcn-ui@latest add card
+- (input) - npx shadcn-ui@latest add input
 
 instalação do husky e lint staged para formatação e verificação de padrão do commit:
 - npm install -D husky lint-staged
 - npx husky init
+
