@@ -3,12 +3,10 @@ import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
 import Image from "next/image";
-import { Card, CardContent } from "./_components/ui/card";
-import { Badge } from "./_components/ui/badge";
-import { Avatar, AvatarImage } from "./_components/ui/avatar";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
-import { quickSearchOptions } from "./_components/quick-searsh";
+import { quickSearchOptions } from "./_constants/quick-searsh";
+import BookingItem from "./_components/booking-item";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
@@ -33,7 +31,7 @@ export default async function Home() {
           </form>
           <div className="mt-6 gap-3 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
             {quickSearchOptions.map((option) => (
-              <Button key={option.name} variant="secondary" className="gap-2">
+              <Button key={option.id} variant="secondary" className="gap-2">
                 <Image alt="" src={option.imageUrl} width={16} height={16} />
                 {option.title}
               </Button>
@@ -52,25 +50,7 @@ export default async function Home() {
           <span className="uppercase text-gray-400 font-bold text-xs">
             Agendamentos
           </span>
-          <Card className="mt-2">
-            <CardContent className="flex justify-between p-0">
-              <div className="flex flex-col gap-2 py-5 pl-5">
-                <Badge className="w-fit">Confirmado</Badge>
-                <h3 className="font-semibold">Corte de cabelo</h3>
-                <div className="flex items-center gap-2">
-                  <Avatar className="h-6 w-6">
-                    <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png" />
-                  </Avatar>
-                  <span className="text-sm">Barbearia FSW</span>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-center border-l p-5">
-                <span className="text-sm">agosto</span>
-                <span className="text-2xl">01</span>
-                <span className="text-sm">09:00</span>
-              </div>
-            </CardContent>
-          </Card>
+          <BookingItem />
         </section>
         <section className="mt-6">
           <span className="uppercase text-gray-400 font-bold text-xs">
