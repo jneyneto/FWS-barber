@@ -8,6 +8,7 @@ import { Badge } from "./_components/ui/badge";
 import { Avatar, AvatarImage } from "./_components/ui/avatar";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
+import FastSearch from "./_components/quick-searsh";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
@@ -21,14 +22,19 @@ export default async function Home() {
     <div className="">
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Olá, Ney!</h2>
-        <span>data ...</span>
-        <form className="flex items-center gap-2 mt-2">
-          <Input placeholder="Faça sua busca ..."></Input>
-          <Button>
-            <SearchIcon />
-          </Button>
-        </form>
+        <section>
+          <h2 className="text-xl font-bold">Olá, Ney!</h2>
+          <span>data ...</span>
+          <form className="flex items-center gap-2 mt-2">
+            <Input placeholder="Faça sua busca ..."></Input>
+            <Button>
+              <SearchIcon />
+            </Button>
+          </form>
+          <div className="mt-6 gap-3 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
+            <FastSearch />
+          </div>
+        </section>
         <div className="relative w-full h-[150px] mt-6">
           <Image
             alt="Agende com os melhores!"
@@ -37,7 +43,7 @@ export default async function Home() {
             className="rounded-xl object-cover"
           />
         </div>
-        <div className="mt-6">
+        <section className="mt-6">
           <span className="uppercase text-gray-400 font-bold text-xs">
             Agendamentos
           </span>
@@ -60,8 +66,8 @@ export default async function Home() {
               </div>
             </CardContent>
           </Card>
-        </div>
-        <div className="mt-6">
+        </section>
+        <section className="mt-6">
           <span className="uppercase text-gray-400 font-bold text-xs">
             Recomendados
           </span>
@@ -70,8 +76,8 @@ export default async function Home() {
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
           </div>
-        </div>
-        <div className="mt-6">
+        </section>
+        <section className="mt-6">
           <span className="uppercase text-gray-400 font-bold text-xs">
             Populares
           </span>
@@ -80,7 +86,7 @@ export default async function Home() {
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
