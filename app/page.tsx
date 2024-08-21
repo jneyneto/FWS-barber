@@ -11,7 +11,11 @@ import BarbershopItem from "./_components/barbershop-item";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
-  console.log({ barbershops });
+  const popularbarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  });
 
   return (
     <div className="">
@@ -61,8 +65,18 @@ export default async function Home() {
           <span className="uppercase text-gray-400 font-bold text-xs">
             Recomendados
           </span>
-          <div className="mt-2 flex-wrap gap-4 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
+          <div className="mt-2 gap-4 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
             {barbershops.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            ))}
+          </div>
+        </div>
+        <div className="mt-6">
+          <span className="uppercase text-gray-400 font-bold text-xs">
+            Populares
+          </span>
+          <div className="mt-2 gap-4 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
+            {popularbarbershops.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
           </div>
