@@ -2,20 +2,46 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 
 const FastSearch = () => {
+  interface QuickSearshOptions {
+    imageUrl: String;
+    title: String;
+  }
+
+  const quickSearchOptions: QuickSearshOptions[] = [
+    {
+      imageUrl: "/cabelo.svg",
+      title: "Cabelo",
+    },
+    {
+      imageUrl: "/barba.svg",
+      title: "Barba",
+    },
+    {
+      imageUrl: "/sobrancelha.svg",
+      title: "Sobrancelha",
+    },
+    {
+      imageUrl: "/massagem.svg",
+      title: "Massagem",
+    },
+    {
+      imageUrl: "/acabamento.svg",
+      title: "Acabamento",
+    },
+    {
+      imageUrl: "/hidratação.svg",
+      title: "Hidratação",
+    },
+  ];
+
   return (
     <div className="gap-3 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
-      <Button variant="secondary" className="gap-2">
-        <Image alt="" src="/cabelo.svg" width={16} height={16} />
-        Cabelo
-      </Button>
-      <Button variant="secondary" className="gap-2">
-        <Image alt="" src="/barba.svg" width={16} height={16} />
-        Barba
-      </Button>
-      <Button variant="secondary" className="gap-2">
-        <Image alt="" src="/sobrancelha.svg" width={16} height={16} />
-        Sobrancelha
-      </Button>
+      {quickSearchOptions.map((option) => (
+        <Button key={option.name} variant="secondary" className="gap-2">
+          <Image alt="" src={option.imageUrl} width={16} height={16} />
+          {option.title}
+        </Button>
+      ))}
     </div>
   );
 };
