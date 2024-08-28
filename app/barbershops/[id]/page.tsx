@@ -1,3 +1,4 @@
+import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
 import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
@@ -15,6 +16,9 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
   const barbershop = await db.barbershop.findUnique({
     where: {
       id: params.id,
+    },
+    include: {
+      services: true,
     },
   });
 
@@ -66,10 +70,13 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         </h2>
         <p className="text-sm text-justify">{barbershop?.description}</p>
       </section>
-      <section className="p-5 border-b border-solid">
+      <section className="p-5 border-b border-solid space-y-3">
         <h2 className="text-xs text-gray-400 font-semibold uppercase">
           serviços
         </h2>
+        {barbershop.services.map((service) => (
+          <ServiceItem key={service.id} service={service} />
+        ))}
       </section>
     </div>
   );
