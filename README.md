@@ -30,8 +30,15 @@ instalação do shadcn para utilização de componente pré formatados (componen
 - (avatar)  - npx shadcn-ui@latest add avatar
 - (Toast)   - npx shadcn-ui@latest add sonner
 - (SideBar) - npx shadcn-ui@latest add sheet
+- (Dialog)  - npx shadcn@latest add dialog
 
 instalação do husky e lint staged para formatação e verificação de padrão do commit:
 - npm install -D husky lint-staged
 - npx husky init
 
+instalação do NextAuth para possibilitar o lonig com o Google (https://next-auth.js.org):
+- npm install next-auth
+- npm install @auth/prisma-adapter
+
+implementação de setup para login com Google no schema:
+- npx prisma migrate dev --name add_auth_tables
