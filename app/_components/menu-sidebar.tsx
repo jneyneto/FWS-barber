@@ -93,19 +93,19 @@ const MenuSideBar = () => {
 
       <section className="flex flex-col py-5 gap-2 border-b border-solid">
         {quickSearchOptions.map((option) => (
-          <Button
-            key={option.id}
-            className="gap-2 justify-start"
-            variant="ghost"
-          >
-            <Image
-              alt={option.title}
-              src={option.imageUrl}
-              height={18}
-              width={18}
-            />
-            {option.title}
-          </Button>
+          <SheetClose key={option.id} asChild>
+            <Button className="gap-2 justify-start" variant="ghost" asChild>
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image
+                  alt={option.title}
+                  src={option.imageUrl}
+                  height={18}
+                  width={18}
+                />
+                {option.title}
+              </Link>
+            </Button>
+          </SheetClose>
         ))}
       </section>
 

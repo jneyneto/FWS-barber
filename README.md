@@ -42,3 +42,8 @@ instalação do NextAuth para possibilitar o lonig com o Google (https://next-au
 
 implementação de setup para login com Google no schema:
 - npx prisma migrate dev --name add_auth_tables
+
+implementação de react hook form para minimizar o numero de renderizações da pagina no input:
+- npx shadcn@latest add form
+- npm i @hookform/resolvers
+- npm install zod

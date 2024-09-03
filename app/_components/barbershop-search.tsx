@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  search: z.string().trim().min(1, {
+  title: z.string().trim().min(1, {
     message: "digite algo para buscar",
   }),
 });
@@ -20,13 +20,13 @@ const BarbershopsSearch = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      search: "",
+      title: "",
     },
   });
   const router = useRouter();
 
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
-    router.push(`/barbershops?search=${data.search}`);
+    router.push(`/barbershops?title=${data.title}`);
   };
 
   return (
@@ -37,7 +37,7 @@ const BarbershopsSearch = () => {
       >
         <FormField
           control={form.control}
-          name="search"
+          name="title"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
