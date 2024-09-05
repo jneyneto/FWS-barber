@@ -49,7 +49,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           </Link>
         </Button>
         <Sheet>
-          <SheetTrigger>
+          <SheetTrigger asChild>
             <Button
               size="icon"
               variant="secondary"
@@ -83,7 +83,11 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           serviços
         </h2>
         {barbershop.services.map((service) => (
-          <ServiceItem key={service.id} service={service} />
+          <ServiceItem
+            key={service.id}
+            service={service}
+            barbershop={barbershop.name}
+          />
         ))}
       </section>
       <section className="p-5 flex flex-col space-y-2">
