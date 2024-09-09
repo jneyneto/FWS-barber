@@ -80,16 +80,18 @@ const MenuSideBar = () => {
         ))}
       </section>
 
-      <section className="py-5">
-        <Button
-          variant="ghost"
-          className="justify-start gap-2 w-full"
-          onClick={handleLogoutClick}
-        >
-          <LogOutIcon size={18} />
-          Sair da conta!
-        </Button>
-      </section>
+      {data?.user && (
+        <section className="py-5">
+          <Button
+            variant="ghost"
+            className="justify-start gap-2 w-full"
+            onClick={handleLogoutClick}
+          >
+            <LogOutIcon size={18} />
+            Sair da conta!
+          </Button>
+        </section>
+      )}
     </SheetContent>
   );
 };
