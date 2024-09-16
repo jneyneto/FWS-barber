@@ -73,7 +73,7 @@ export default async function Home() {
             className="rounded-xl object-cover"
           />
         </div>
-        {user?.user && (
+        {bookings.length > 0 && (
           <section className="mt-6">
             <span className="uppercase text-gray-400 font-bold text-xs">
               Agendamentos
