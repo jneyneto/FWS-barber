@@ -1,4 +1,5 @@
 Este README terá como finalidade exibir os comandos executados no prompt de comando, na ordem em que os mesmos são executados, para auxiliar futuras pesquisas, próprias ou de terceiros que queiram inspirar-se neste projeto!
+Figma do projeto: https://www.figma.com/design/ByDjVh7THsTnsSVRKNN8yy/FSW-5.0-%5BLive%5D
 
 inicialização do projeto:
 - npx create-next-app@latest FWS-barber
