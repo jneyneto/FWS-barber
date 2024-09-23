@@ -32,8 +32,6 @@ instalação do shadcn para utilização de componente pré formatados (componen
 - (Toast)       - npx shadcn-ui@latest add sonner
 - (SideBar)     - npx shadcn-ui@latest add sheet
 - (Dialog)      - npx shadcn@latest add dialog
-- (AlertDialog) - npx shadcn@latest add alert-dialog
-
 
 instalação do husky e lint staged para formatação e verificação de padrão do commit:
 - npm install -D husky lint-staged
