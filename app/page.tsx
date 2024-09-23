@@ -9,6 +9,8 @@ import BarbershopsSearch from "./_components/barbershop-search";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./_lib/auth";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({});
@@ -46,8 +48,12 @@ export default async function Home() {
       <Header />
       <div className="p-5">
         <section>
-          <h2 className="text-xl font-bold">Olá, Ney!</h2>
-          <span>data ...</span>
+          <h2 className="text-xl font-bold">
+            Olá, {user?.user ? user.user.name?.split(" ")[0] : "bem vindo"}!
+          </h2>
+          <span>
+            {format(new Date(), "EEEE',' d 'de' MMMM'.'", { locale: ptBR })}
+          </span>
           <BarbershopsSearch />
           <div className="mt-6 gap-3 flex w-full overflow-auto [&:: -webkit-scrollbar]:hidden">
             {quickSearchOptions.map((option) => (
